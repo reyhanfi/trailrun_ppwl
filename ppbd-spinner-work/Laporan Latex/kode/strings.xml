@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Presensi</string>
+    <string name="pilih_tanggal">Tanggal presensi</string>
+    <string name="pilih_waktu">Waktu presensi</string>
+    <string name="status_presensi">Status presensi</string>
+    <string name="keterangan">Keterangan</string>
+    <string name="hint_keterangan">Masukkan keterangan</string>
+    <string name="error_keterangan">Isi keterangan terlebih dahulu</string>
+    <string name="submit">Submit</string>
+    <string name="keluar">Keluar</string>
+    <string name="judul_keluar">Keluar aplikasi?</string>
+    <string name="pesan_keluar">Apakah Anda yakin ingin keluar dari aplikasi Presensi?</string>
+    <string name="ya">Ya</string>
+    <string name="tidak">Tidak</string>
+    <string-array name="status_presensi">
+        <item>Hadir Tepat Waktu</item>
+        <item>Sakit</item>
+        <item>Terlambat</item>
+        <item>Izin</item>
+    </string-array>
+</resources>

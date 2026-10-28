@@ -1,0 +1,186 @@
+
+--- PAGE 1 ---
+Laporan Praktikum
+Pemrograman Web 2
+Pertemuan 5
+Controller dan Migration
+Nama Mahasiswa: Reyhan Abelard Fikri
+NIM: 25/56200/SV/26713
+Kelas: A1
+Dosen Pengampu: Dinar Nugroho Pratomo, S.Kom., M.IM., M.Cs.
+Sekolah Vokasi
+Universitas Gadjah Mada
+Yogyakarta
+2026
+
+--- PAGE 2 ---
+Daftar Isi
+Bab 1. Pendahuluan 2
+1.1 Tujuan Praktikum . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+Bab 2. Dasar T eori 3
+2.1 Routing di Laravel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+2.2 Controller dan View . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+2.3 Migration dan Manajemen Database . . . . . . . . . . . . . . . . . . . . . . . . . 3
+Bab 3. Hasil dan Pembahasan 4
+3.1 Langkah-langkah Praktikum . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+3.1.1 Membuka Project Laravel . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+3.1.2 Membuat Controller . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+3.1.3 Menambahkan Route . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+3.1.4 Mengatur Method Index . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+3.1.5 Membuat View Posts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+3.1.6 Mengisi View Posts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+3.1.7 Menjalankan Route /posts . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+3.1.8 Membuat Database . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+3.1.9 Melakukan Kongurasi Database . . . . . . . . . . . . . . . . . . . . . . . 7
+3.1.10 Membuat Migration . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+3.1.11 Menentukan Struktur Tabel Posts . . . . . . . . . . . . . . . . . . . . . . 8
+3.1.12 Menjalankan Migration . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+Bab 4. Kesimpulan 10
+4.1 Kesimpulan . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+Daftar Pustaka 11
+1
+
+--- PAGE 3 ---
+Bab 1. Pendahuluan
+1.1 Tujuan Praktikum
+1. Memahami konsep routing pada Laravel dan cara menghubungkan URL ke handler yang
+tepat.
+2. Menyusun controller agar logika aplikasi dipisahkan dari view.
+3. Menyusun view sederhana yang menampilkan hasil data ke browser.
+4. Menggunakan migration untuk membuat struktur tabel database secara konsisten.
+5. Menyusun laporan praktikum sesuai format yang ditetapkan.
+2
+
+--- PAGE 4 ---
+Bab 2. Dasar Teori
+2.1 Routing di Laravel
+Routing adalah proses pengaturan URL agar setiap permintaan HTTP dapat dipetakan ke
+fungsi atau controller tertentu. Dalam Laravel, kongurasi route biasanya diletakkan pada le
+routes/web.php, yang berperan sebagai titik masuk permintaan pengguna ke aplikasi. Dengan
+routing, aplikasi dapat membedakan halaman utama, halaman tentang, maupun halaman yang
+menangani data tertentu, sehingga struktur navigasi dapat diatur secara terorganisir dan mudah
+dikembangkan [1].
+2.2 Controller dan View
+Controller merupakan komponen yang berisi logika aplikasi untuk menangani proses terten-
+tu sebelum data dikirim ke tampilan. Di Laravel, controller biasanya disimpan pada folder
+app/Http/Controllersdan digunakan untuk memanggil view yang sesuai dengan kebutuhan
+aplikasi. View sendiri berisi markup HTML dan berfungsi menampilkan hasil data ke penggu-
+na, sementara Blade digunakan sebagai template engine yang mempercepat proses pembuatan
+halaman tanpa menuliskan logika berulang [2].
+2.3 Migration dan Manajemen Database
+Migration adalah tur Laravel untuk mengelola struktur database melalui kode, bukan me-
+lalui perubahan manual di database. Dengan migration, pembuatan tabel, perubahan kolom,
+maupun penghapusan struktur dapat dilakukan secara terdokumentasi dan reproducible. Hal
+ini sangat berguna dalam pengembangan proyek karena setiap perubahan struktur data dapat
+diikuti dan dipelihara dengan rapi, sehingga konsistensi database tetap terjaga selama proses
+pengembangan [3].
+3
+
+--- PAGE 5 ---
+Bab 3. Hasil dan Pembahasan
+Praktikum ini dilakukan secara bertahap untuk memahami cara kerja Laravel dalam meng-
+elola route, controller, view, dan database. Setiap tahap dikerjakan sesuai alur yang logis agar
+proses pembuatan aplikasi dapat terlihat dengan jelas dan mudah dipahami.
+3.1 Langkah-langkah Praktikum
+3.1.1 Membuka Project Laravel
+Langkah awal dilakukan dengan membuka project Laravel yang sudah dibuat sebelumnya.
+Proses ini penting karena semua kongurasi dan pengaturan aplikasi akan dijalankan di dalam
+project tersebut agar struktur proyek tetap terorganisir.
+Gambar 3.1: Project Laravel yang dibuka pada tahap awal pengerjaan
+3.1.2 Membuat Controller
+Setelah project terbuka, langkah selanjutnya adalah membuat controller yang akan menanga-
+ni logika aplikasi. Pembuatan controller dilakukan agar proses pengolahan data dan pengiriman
+tampilan dapat dipisahkan dari le view, sehingga struktur kode menjadi lebih rapi.
+4
+
+--- PAGE 6 ---
+Laporan Praktikum Praktikum Pemrograman Web 2
+Gambar 3.2: Pembuatan controller untuk menampung logika aplikasi
+3.1.3 Menambahkan Route
+Route ditambahkan untuk menghubungkan URL tertentu dengan halaman atau fungsi yang
+sesuai. Proses ini sangat penting karena seluruh permintaan dari browser harus diarahkan ke
+halaman yang tepat agar aplikasi dapat berjalan dengan benar.
+Gambar 3.3: Penambahan route pada leroutes/web.php
+3.1.4 Mengatur Method Index
+Setelah route dibuat, methodindex()diatur agar mengembalikan view yang sesuai kebutuh-
+an aplikasi. Dengan pengaturan ini, data dan tampilan dapat ditangani dalam satu alur yang
+lebih terstruktur dan mudah dikelola.
+Gambar 3.4: Pengaturan methodindex()pada controller
+5
+
+--- PAGE 7 ---
+Laporan Praktikum Praktikum Pemrograman Web 2
+3.1.5 Membuat View Posts
+Kemudian dibuat le view yang akan menampilkan halaman tertentu pada aplikasi. View
+berperan sebagai komponen tampilan yang menampilkan hasil data kepada pengguna, sekaligus
+mempermudah pengaturan desain halaman.
+Gambar 3.5: Pembuatan view untuk halamanposts
+3.1.6 Mengisi View Posts
+Setelah le view dibuat, langkah selanjutnya adalah mengisi konten halaman dengan struktur
+HTML yang diinginkan. Proses ini dilakukan agar halaman yang ditampilkan kepada pengguna
+sudah siap dan sesuai dengan kebutuhan interface aplikasi.
+Gambar 3.6: Pengisian konten viewpostsagar menampilkan data yang diinginkan
+3.1.7 Menjalankan Route /posts
+Setelah route dan view selesai disusun, dilakukan pengecekan dengan menjalankan route
+/posts. Langkah ini bertujuan untuk memastikan bahwa URL yang dibuka dapat menampilkan
+halaman dengan benar sesuai fungsi controller dan view yang sudah dibuat.
+6
+
+--- PAGE 8 ---
+Laporan Praktikum Praktikum Pemrograman Web 2
+Gambar 3.7: Pengecekan route/postsuntuk memastikan halaman tampil sesuai rencana
+3.1.8 Membuat Database
+Pada tahap ini, database dibuat agar aplikasi memiliki tempat penyimpanan data yang diper-
+lukan. Pembuatan database menjadi dasar penting dalam pengembangan aplikasi karena setiap
+data yang diproses harus disimpan dan dikelola dalam struktur yang teratur.
+Gambar 3.8: Proses pembuatan database untuk aplikasi Laravel
+3.1.9 Melakukan Kongurasi Database
+Setelah database dibuat, dilakukan kongurasi database agar aplikasi Laravel dapat terhu-
+bung dengan benar. Kongurasi ini penting sehingga framework dapat mengakses database yang
+sudah dibuat dan menjalankan operasi CRUD secara konsisten.
+Gambar 3.9: Kongurasi database agar Laravel terhubung dengan basis data yang dibuat
+7
+
+--- PAGE 9 ---
+Laporan Praktikum Praktikum Pemrograman Web 2
+3.1.10 Membuat Migration
+Langkah berikutnya adalah membuat migration untuk mendenisikan struktur tabel secara
+rapi dalam bentuk le kode. Dengan migration, perubahan struktur database dapat didokumen-
+tasikan dan dipelihara dengan lebih aman dibandingkan mengubah database secara manual.
+Gambar 3.10: Pembuatan le migration untuk tabel yang akan dibuat pada database
+3.1.11 Menentukan Struktur Tabel Posts
+Pada tahap ini, struktur tabelpostsditentukan berdasarkan kebutuhan aplikasi. Penentuan
+kolom dan tipe data dilakukan secara hati-hati agar data yang disimpan dapat dikelola dengan
+baik dan sesuai kebutuhan proses bisnis aplikasi.
+Gambar 3.11: Penentuan struktur tabelpostssesuai kebutuhan data aplikasi
+3.1.12 Menjalankan Migration
+Langkah terakhir adalah menjalankan migration agar tabel yang sudah didenisikan dapat
+dibuat di database. Proses ini menjadi bukti bahwa kongurasi database, migration, dan aplikasi
+Laravel telah terhubung dengan benar.
+8
+
+--- PAGE 10 ---
+Laporan Praktikum Praktikum Pemrograman Web 2
+Gambar 3.12: Eksekusiphp artisan migrateuntuk membuat tabelpostspada database
+9
+
+--- PAGE 11 ---
+Bab 4. Kesimpulan
+4.1 Kesimpulan
+1. Routing pada Laravel memungkinkan setiap URL dipetakan ke fungsi atau controller ter-
+tentu sehingga aplikasi lebih teratur dan mudah dikelola.
+2. Controller berperan sebagai penghubung logika aplikasi dan tampilan, sehingga code men-
+jadi lebih terstruktur serta mudah untuk dikembangkan.
+3. Migration membantu menjaga struktur database tetap konsisten dan terdokumentasi, se-
+hingga perubahan data dapat dijalankan dengan aman dan rapi.
+10
+
+--- PAGE 12 ---
+Daftar Pustaka
+[1] Laravel Documentation. (2026). Routing  Laravel Framework. Diakses darihttps://
+laravel.com/docs/10.x/routing.
+[2] Laravel Documentation. (2026). Controllers  Laravel Framework. Diakses darihttps://
+laravel.com/docs/10.x/controllers.
+[3] Laravel Documentation. (2026). Database: Migrations  Laravel Framework. Diakses dari
+https://laravel.com/docs/10.x/migrations.
+11
