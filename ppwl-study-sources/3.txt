@@ -1,413 +1,0 @@
-
---- PAGE 1 ---
-Laporan Praktikum
-Pemrograman Web Lanjut
-Pertemuan 3
-Eksplorasi Laravel
-Nama Mahasiswa: Reyhan Abelard Fikri
-NIM: 25/562000/SV/26713
-Kelas: A1
-Dosen Pengampu: Dinar Nugroho Pratomo, S.Kom., M.IM., M.Cs.
-Sekolah Vokasi
-Universitas Gadjah Mada
-Yogyakarta
-2026
-
---- PAGE 2 ---
-Daftar Isi
-Bab 1. Pendahuluan 2
-1.1 Tujuan Praktikum . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
-Bab 2. Dasar T eori 3
-Bab 3. Hasil dan Pembahasan 4
-3.1 Soal 1: Metode Instalasi Laravel . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
-3.2 Soal 2: Evolusi Versi Laravel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
-3.3 Soal 3: Multi-Version dengan PHP Berbeda . . . . . . . . . . . . . . . . . . . . . 10
-3.3.1 Dokumentasi: Laravel 11 . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
-3.3.2 Dokumentasi: Laravel 12 . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
-3.3.3 Dokumentasi: Laravel 13 . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
-Bab 4. Kesimpulan 19
-Daftar Pustaka 20
-1
-
---- PAGE 3 ---
-Bab 1. Pendahuluan
-1.1 Tujuan Praktikum
-1. Mahasiswa mampu mengenaliframeworkLaravel.
-2. Mahasiswa mengetahui cara melakukaninstalasiLaravel.
-3. Mahasiswa dapat melakukaninstalasiLaravel
-2
-
---- PAGE 4 ---
-Bab 2. Dasar Teori
-Dalam pengembangan aplikasiwebsiteberbasisHypertext Preprocessor(PHP), pemanfaatan
-sebuahframeworksemakin populer karena kemampuannya dalam menciptakan struktur kode
-yang lebih terorganisir, rapi, dan aman. Salah satuframeworkPHP yang paling diminati saat
-ini adalah Laravel. Laravel merupakan framework yang dirancang untuk membantu pengembang
-dalam membangun aplikasi website secara lebih sederhana, terstruktur, dan esien. Penggunaan
-framework seperti Laravel memungkinkan pengembang memanfaatkan berbagai komponen dan
-tur yang telah tersedia sehingga proses pengembangan tidak harus dilakukan sepenuhnya dari
-awal.
-Menurut penelitian yang dilakukan oleh Sinlae dkk. (2024), Laravel terbukti sangat andal dan
-esien dalam memfasilitasi pembangunan aplikasiwebsiteyang kompleks, termasuk penyediaan
-tur autentikasi pengguna, manajemendatabase, dan sistem pengaturanroutingbawaan [1].
-Penggunaan Laravel memberikan berbagai keuntungan teknis yang signikan bagideveloper.
-Secara khusus,frameworkini mampu mempercepat waktu pengembangan dengan mengurangi
-jumlah penulisan kode dari nol (from scratch) serta mempermudah integrasi dengan berbagai
-layanan pihak ketiga.
-Dari sisi kinerja, aplikasiwebsiteyang dibangun menggunakan arsitektur Laravel menunjukk-
-an tingkat responsivitas dan skalabilitas yang amat baik. Di samping itu, Laravel juga unggul
-berkat adanya dokumentasi yang sangat komprehensif dan dukungan dari komunitas pengguna
-global yang aktif, sehingga sangat membantu pengembang ketika menghadapi kendala penye-
-lesaian masalah (troubleshooting) dalam menerapkan praktik pengembangan modern yang baik
-[1].
-3
-
---- PAGE 5 ---
-Bab 3. Hasil dan Pembahasan
-3.1 Soal 1: Metode Instalasi Laravel
-1.Sebutkan minimal 4 cara berbeda untuk menginstal Laravel!
-Jawaban:
-Berikut adalah 4 cara yang berbeda untuk menginstalframeworkLaravel:
-Melalui Composer (Create-Project):Menggunakan tur bawaan Composer de-
-ngan menjalankan perintah terminalcomposer create-project laravel/laravel
-nama-project.
-Melalui Laravel Global Installer:MenginstalinstallerLaravel secara global di
-komputer menggunakan perintahcomposer global require laravel/installer,
-kemudian membuatprojectbaru dengan cukup mengetikkanlaravel new
-nama-project.
-Melalui Laravel Sail (Docker):MenggunakanenvironmentDocker (umum-
-nya untuk MacOS/Linux/WSL) dengan menjalankan perintahcurl -s
-https://laravel.build/nama-project | bash.
-Melalui Laravel Herd atau V alet:Menggunakan aplikasilocal development en-
-vironment(seperti Herd untuk Windows/macOS). Metode ini sudah memiliki PHP,
-Nginx, dan Composer di dalamnya tanpa perlu kongurasi rumit.
-2.Praktikkan 1 cara/metode instalasi tersebut dan buat project Laravel baru!
-Jawaban:
-Di sini saya menggunakan instalasi standar menggunakanComposer Create-Project.
-Perintah yang dijalankan di terminal untuk membuatprojectbaru bernamalaraveladalah
-sebagai berikut:
-1composer create - project laravel / laravel laravel
-3.Screenshot setiap langkah dan jelaskan caranya sampai project berhasil dija-
-lankan di browser!
-Jawaban:
-Di bawah ini saya tampilkan dokumentasi langkah instalasi beserta screenshot berurutan
-yang berasal dari folder "SS Proses Install Laravel":
-(a)Menyiapkan Composer:Menjalankan kongurasi awal Composer sesuai panduan
-instalasi.
-4
-
---- PAGE 6 ---
-Laporan Praktikum Pemrograman Web Lanjut
-Gambar 3.1: Setup Composer
-(b)Menentukan Path PHP:Memastikan path PHP mengarah ke executable yang
-benar agar Composer dan Artisan bekerja.
-Gambar 3.2: Penyesuaian PATH PHP
-(c)Memeriksa V ersi PHP:Mengecek kompatibilitas PHP dengan perintahphp -v.
-Gambar 3.3: Pemeriksaan versi PHP
-(d)Membuat Proyek Laravel:Menjalankancomposer create-projectuntuk meng-
-unduh skeleton aplikasi.
-5
-
---- PAGE 7 ---
-Laporan Praktikum Pemrograman Web Lanjut
-Gambar 3.4: Eksekusi pembuatan proyek
-(e)V erikasi Instalasi:Memastikan proses instalasi paket selesai tanpa error.
-Gambar 3.5: Instalasi dependensi selesai
-(f)Masuk ke Direktori Proyek:Berpindah ke folder proyek yang baru dibuat dengan
-cd nama-proyek.
-Gambar 3.6: Navigasi ke direktori proyek
-(g)Menjalankan Server Lokal:Menghidupkan server development menggunakanphp
-artisan serve.
-Gambar 3.7: Menjalankan server Artisan
-6
-
---- PAGE 8 ---
-Laporan Praktikum Pemrograman Web Lanjut
-(h)Akses di Browser:Membukahttp://localhost:8000untuk melihat halaman de-
-fault Laravel.
-Gambar 3.8: Halaman default di browser
-(i)Mengubah View:Mengedit leresources/views/welcome.blade.phpuntuk me-
-nyesuaikan tampilan.
-Gambar 3.9: Mengedit berkas view
-(j)V erikasi Perubahan:Merefresh browser untuk memastikan perubahan tampil se-
-suai harapan.
-Gambar 3.10: Hasil modikasi pada browser
-3.2 Soal 2: Evolusi Versi Laravel
-1.Apa perbedaan utama antara Laravel 7 sampai dengan Laravel versi terbaru?
-(Buat dalam bentuk tabel atau timeline yang mudah dipahami)
-7
-
---- PAGE 9 ---
-Laporan Praktikum Pemrograman Web Lanjut
-Jawaban:
-Berikut adalah tabel ringkasan evolusi dan perbedaan fokus utamaframeworkLaravel dari
-versi 7 hingga versi 13:
-V ersi Rilis Min. PHP Perbedaan / F okus Utama
-7 Maret 2020 ≥7.2.5 Peningkatan kecepatanrouting, perkenalan
-komponen Blade HTML, dan Laravel San-
-ctum.
-8 Sept 2020 ≥7.3 Perubahan strukturfoldermenjadi
-app/Models, kehadiran Laravel Sail, dan
-class-based model factories.
-9 Feb 2022 ≥8.0 Transisi rilis menjadi tahunan (mengikuti rilis
-Symfony 6.0) dan dukungansyntaxmodern
-PHP 8 (Enum).
-10 Feb 2023 ≥8.1 Implementasi deklarasi tipe (native type de-
-clarations) secara ketat pada seluruhskeleton
-aplikasi.
-11 Maret 2024 ≥8.2 Penyederhanaan arsitektur aplikasi (slimmer
-skeleton) dan menjadikan SQLite sebagaida-
-tabase default.
-12 Feb 2025 ≥8.2 Pengenalan eksekusi tugas latar belakang ba-
-waan (deferred tasks) dan paralelisasi proses
-denganConcurrency API.
-13 Feb 2026 ≥8.3 Integrasi penuh WebSockets bawaan (Laravel
-Reverb) sebagai standar dan perombakan ar-
-sitekturContext APIuntuk pelacakan (log-
-ging).
-Tabel 3.1: Tabel Evolusi Versi Laravel (7 hingga 13)
-2.Sebutkan tur-tur baru di setiap versi Laravel mulai dari versi 7! (Minimal 3
-tur utama per versi)
-Jawaban:
-Berikut adalah rincian 3 tur utama baru pada setiap versi Laravel mulai dari versi 7
-hingga versi 13:
-Laravel 7
-(a)Laravel Sanctum:Sistemlightweight authenticationkhusus untuk API pada
-Single Page Application(SPA) dan aplikasimobile.
-(b)Blade Component T ags:Penggunaantagkomponen (<x-component>) untuk
-menyusun antarmuka berbasisclass.
-8
-
---- PAGE 10 ---
-Laporan Praktikum Pemrograman Web Lanjut
-(c)HTTP Client Ekspresif:MenyediakanwrapperHTTP Client berbasis Guzzle
-yang intuitif (Http::get,Http::post).
-Laravel 8
-(a)Direktoriapp/Models:Model Eloquent dikelompokkan secaradefaultdalam
-folderapp/Models.
-(b)Laravel Sail & Jetstream:Ekosistem Docker siap pakai (Sail) danscaolding
-UI modern dengan tur autentikasi canggih (Jetstream).
-(c)Class-Based Model F actories:Penulisan sistem datadummyberalih dari
-berbasisclosuremenjadi berbasis objek/kelas (OOP).
-Laravel 9
-(a)Controller Route Groups:Penulisanroutingke satucontrolleryang sama
-menjadi lebih rapi denganRoute::controller()->group().
-(b)Anonymous Stub Migrations:Pembuatanclass migrationyang anonim untuk
-memecahkan permasalahan bentrokan namaclass.
-(c)F ull T ext Indexing:Hadirnya metode baruwhereFullText()untuk kemudah-
-an eksekusi pencarian teks penuh padadatabase.
-Laravel 10
-(a)Native Type Declarations:SeluruhboilerplateLaravel mewajibkan penulisan
-tipe data spesik mengikuti standar ketat PHP 8.1.
-(b)Laravel Pennant:Packageresmi (rst-party) untuk pengelolaan tur-tur apli-
-kasi menggunakan metodeFeature Flags.
-(c)Process F acade:Menjalankan dan menguji eksekusi baris perintah (CLI) sistem
-operasi secara lebih esien dari dalam kode PHP.
-Laravel 11
-(a)Slimmer Application Skeleton:Arsitektur yang jauh lebih ramping dengan
-membuangHttp/Kernel.phpdan pemangkasan kongurasi bawaan.
-(b)SQLite Secara Default:Mengadopsi SQLite sebagaidatabaseutama pada
-instalasi awal, memudahkan pemula untuk langsung menjalankan aplikasi tanpa
-kongurasi serverdatabase.
-(c)Health Routing (/up):Titik akhir (endpoint) otomatis untuk keperluan peme-
-riksaan kesehatan ketersediaan aplikasi (health check monitoring).
-Laravel 12
-(a)Deferred T asks (defer):Fungsi pembantu baru untuk menunda eksekusiclosu-
-reberat agar berjalan di latar belakang (setelah respons HTTP dikirim ke klien)
-tanpa memerlukan kongurasimessage queuerumit.
-(b)Concurrency API:Memungkinkan penjalanan beberapa proses PHP secara se-
-rentak/paralel denganConcurrency::run(), sangat berguna untuk mempercepat
-eksekusi layanan eksternal (API eksternal) ganda.
-(c)Optimasi Kecepatan Eloquent:Perbaikan tingkat internal yang meminima-
-lisir masalahN+1 query problembawaan dan memaksimalkan konsumsi memori
-saat memuat banyak relasi dari database.
-9
-
---- PAGE 11 ---
-Laporan Praktikum Pemrograman Web Lanjut
-Laravel 13
-(a)Native Laravel Reverb:Pengintegrasian infrastruktur WebSockets kelas satu
-secara bawaan (rst-party) langsung pada arsitektur utama untuk memfasilita-
-si aplikasireal-timeberskala besar tanpa butuh layanan pihak ketiga (seperti
-Pusher).
-(b)Context API:Pengelolaan pelacakan siklus hidup (request lifecycle) terpusat,
-mempermudah penyisipan informasi penting lintas aplikasi (seperti IPuseratau
-UUID) yang terhubung langsung pada seluruh sistemlogging.
-(c)Modernisasi PHP 8.3+:Optimalisasi komponen inti Laravel secara menye-
-luruh menggunakanTyped Class Constantsdan propertiReadonlyyang hanya
-diizinkan pada versi PHP 8.3 ke atas untuk keamanan kode tingkat lanjut.
-3.3 Soal 3: Multi-Version dengan PHP Berbeda
-A. T ools untuk Mengelola Multiple PHP V ersions
-Untuk mengelola berbagai versi PHP dalam satu mesin pengembangan (development machine),
-terdapat beberapatoolsyang lazim dan efektif digunakan:
-Laravel Herd / V alet:Toolini sangat direkomendasikan karena ringan dan cepat. Herd
-(Windows/macOS) menyediakan antarmuka GUI yang memungkinkan pengembang untuk
-mengisolasi setiapprojectdengan versi PHP yang berbeda-beda secara spesik tanpa saling
-mengganggu.
-Laragon (Windows):Aplikasilocal environmentyang sangat eksibel. Pengembang
-dapat mengunduh beberapa versi PHP sekaligus dan mengubah versi PHP global yang
-sedang aktif secara langsung (on-the-y) melalui menu navigasi.
-Docker (via Laravel Sail):Memanfaatkan teknologi kontainer (containerization), di
-mana setiap aplikasi berjalan pada citra (image) PHP khusus (misalsail-8.1/appuntuk
-PHP 8.1 atausail-8.3/appuntuk PHP 8.3) tanpa harus menginstal sistem PHP langsung
-ke OS komputer.
-B. Cara Instalasi Laravel dengan Berbagai V ersi PHP
-Setelah memastikan versi PHP yang aktif sudah sesuai dengan kebutuhan versi Laravel yang di-
-tuju (misal: mengaktifkan PHP 8.2 untuk Laravel 12), instalasi spesik dapat dilakukan dengan
-menambahkan spesikasi versi (version constraint) pada perintah Composer. Format perintah-
-nya adalah:
-1composer create - project laravel / laravel :^12.0 n a m a _ p r o j e k
-C. Dokumentasi Implementasi Multi-V ersion (Kelompok)
-Berikut adalah dokumentasi lengkap dari masing-masing anggota kelompok dalam melakukan
-instalasi versi Laravel dan PHP yang berbeda, lengkap dengan tahapan modikasi tampilan.
-3.3.1 Dokumentasi: Laravel 11
-Pada implementasi ini, proses penyiapanenvironmenthingga modikasi tampilan di dalam in-
-stalasi Laravel 11 diringkas menjadi beberapa tahapan berikut:
-10
-
---- PAGE 12 ---
-Laporan Praktikum Pemrograman Web Lanjut
-1.Identikasi V ersi PHP:Mengeksekusi perintahphp -vdi terminal. Langkah ini ber-
-tujuan mengonrmasi bahwa PHP yang terpasang di sistem telah sesuai dengan standar
-kecocokan (kompatibilitas) dari Laravel 11.
-Gambar 3.11: Mengecek versi PHP yang aktif
-2.Pengecekan V ersi Composer:Menjalankan perintahcomposer versionpadacom-
-mand prompt. Untuk memastikan bahwa manajer dependensi (package manager) untuk
-ekosistem PHP telah tersedia.
-Gambar 3.12: Verikasi ketersediaan Composer
-3.Menjalankan Local Development Server:Server lokal Laravel dihidupkan melalui
-perintahphp artisan serve.
-11
-
---- PAGE 13 ---
-Laporan Praktikum Pemrograman Web Lanjut
-Gambar 3.13: Inisialisasi php artisan serve
-4.Memuat Halaman W elcome Laravel:Mengakses URLhttp://127.0.0.1:8000meng-
-gunakanweb browseruntuk memvalidasi keberhasilan server lokal. Apabila tidak ada ken-
-dala, antarmuka standar (welcome screen) bawaan dari instalasi Laravel 11 akan tertampil
-utuh di layar.
-Gambar 3.14: Halaman awal (welcome) Laravel 11
-5.Modikasi dan Render Bagian Body:Melakukan kustomisasi halaman utama dengan
-mengedit struktur HTML di dalamtag<body>pada berkasresources/views/welcome.blade.php.
-Setelahledisimpan dan layar di-refresh, teks beserta perombakan tata letak (layout) yang
-baru langsung tereksekusi padabrowser.
-12
-
---- PAGE 14 ---
-Laporan Praktikum Pemrograman Web Lanjut
-Gambar 3.15: Hasil perombakan tampilan di berkas view
-3.3.2 Dokumentasi: Laravel 12
-Proses instalasi dan modikasiprojectdilakukan melalui tahapan berikut:
-1.Pengecekan V ersi PHP:Melakukan verikasi lingkungan pengembangan menggunakan
-perintahphp -vuntuk memastikan komputer menjalankan versi PHP yang memenuhi
-syarat minimal Laravel 11.
-Gambar 3.16: Verikasi versi PHP
-2.Pembuatan Project (Composer):Mengeksekusi perintahcomposer create-project
-di dalam terminal untuk mulai mengunduh kerangka kerja (core) Laravel beserta depen-
-densinya.
-Gambar 3.17: Eksekusi perintah pembuatan project
-3.Instalasi Berhasil:Menampilkan log terminal yang menunjukkan bahwa keseluruhan
-proses unduhan paket (packages) dangenerating optimized autoload lestelah selesai 100%
-tanpa indikasierror.
-13
-
---- PAGE 15 ---
-Laporan Praktikum Pemrograman Web Lanjut
-Gambar 3.18: Proses instalasi sukses
-4.Navigasi Direktori Project:Menggunakan perintahcd nama_projekuntuk memin-
-dahkan sesi terminal agar masuk ke dalam direktoriprojectyang baru saja dibuat.
-Gambar 3.19: Masuk ke direktori kerja
-5.Inisialisasi Local Server:Menghidupkandevelopment serverbawaan dengan cara men-
-jalankan perintahphp artisan serveagar aplikasi dapat diakses.
-Gambar 3.20: Menjalankan php artisan serve
-6.Akses Default di Browser:Melakukan pengujian dengan membukaweb browsermenuju
-alamathttp://localhost:8000. Halaman awal (welcome page) standar Laravel berhasil
-dirender.
-14
-
---- PAGE 16 ---
-Laporan Praktikum Pemrograman Web Lanjut
-Gambar 3.21: Tampilan awal (default) Laravel di browser
-7.Modikasi T ampilan View:Membukacode editorlalu menavigasi kepathresources/views/welcome.blade.php.
-Beberapa baris kode HTML pada halaman tersebut dimodikasi untuk mengubah antar-
-muka utamanya.
-Gambar 3.22: Modikasi berkas welcome.blade.php
-8.Hasil Akhir Modikasi:Memuat ulang (refresh) browser. Perubahan antarmuka yang
-dituliskan sebelumnya berhasil direeksikan dan ditampilkan di layar komputer.
-Gambar 3.23: Tampilan browser setelah view dimodikasi
-3.3.3 Dokumentasi: Laravel 13
-Pada bagian ini, fokus pengembangan ditujukan pada penerapanframeworkLaravel versi 13.
-Adapun tahapan pengujian lingkungan sistem, manajemen paket, hingga peluncuran aplikasi
-15
-
---- PAGE 17 ---
-Laporan Praktikum Pemrograman Web Lanjut
-didokumentasikan sebagai berikut:
-1.V alidasi PHP V ersion:Pengecekan awal dilakukan dengan mengetikkan instruksiphp
--v. Evaluasi ini sangat krusial untuk menjamin bahwaenginePHP dasar pada perangkat
-sudah memenuhi batas minimum spesikasi yang diwajibkan oleh kerangka kerja Laravel
-13.
-Gambar 3.24: Pengecekan versi PHP di terminal
-2.Eksekusi Composer Install:Menjalankan sintakscomposer installpada direktori
-kerja. Perintah ini bertugas membaca kongurasi dari berkascomposer.json, kemudian
-menarik (download) serta memetakan seluruh paket dependensi pihak ketiga yang diper-
-lukan agar proyek dapat berfungsi optimal.
-Gambar 3.25: Proses instalasi dependensi menggunakan composer install
-3.Pengecekan Composer V ersion:Menjalankan perintahcomposer version(ataucomposer
--v) guna memastikan ketersediaan modul Composer itu sendiri di dalam OS. Versi Compo-
-ser yang tepat danup-to-dateakan mencegah munculnya konik selama proses manajemen
-paket (package management).
-16
-
---- PAGE 18 ---
-Laporan Praktikum Pemrograman Web Lanjut
-Gambar 3.26: Validasi modul Composer yang terinstal
-4.Menjalankan PHP Artisan Serve:Memicubuilt-in web serverbawaan dengan meng-
-eksekusi perintahphp artisan serve. Melalui perintah ini, aplikasi akan disiarkan dan
-diikat (binding) ke dalam sebuahhostdanportspesik (umumnya di127.0.0.1:8000)
-agar bisa diakses ke publik/lokal.
-Gambar 3.27: Status server berjalan pada command line
-5.Menampilkan Halaman Utama Laravel:Melakukan pengujian akhir dengan memu-
-at alamathttp://localhost:8000di peramban web (browser). Munculnya antarmuka
-beranda utama khas Laravel secara utuh mengindikasikan bahwa seluruh proses integrasi
-dansetupaplikasi telah sukses tereksekusi tanpa galat (error).
-Gambar 3.28: Antarmuka halaman utama Laravel 13 pada browser
-17
-
---- PAGE 19 ---
-Laporan Praktikum Pemrograman Web Lanjut
-T ools untuk Mengelola Multiple PHP V ersions
-Untuk mengelola berbagai versi PHP, saya menggunakan aplikasiLaragon.Toolsini saya pilih
-karena penggunaannya cukup eksibel dan sangat memudahkan pada sistem operasi Windows.
-Langkah-langkah untuk menambahkan dan mengubah versi PHP di Laragon adalah sebagai
-berikut:
-1. Mengunduh (download) le versi PHP yang dibutuhkan dari situs resminya.
-2. Mengekstrak le tersebut dan memindahkannya ke dalam direktori instalasi Laragon, te-
-patnya diC:\laragon\bin\php.
-3. Untuk mengubah versi PHP, cukup klik kanan pada antarmuka aplikasi Laragon, pilih
-menuPHP→V ersion, lalu pilih versi PHP yang ingin digunakan.
-Setelah versi dipilih, Laragon akan memuat ulang (reload) server secara otomatis. Dengan
-menggunakan Laragon, saya tidak perlu lagi mengaturEnvironment Variablessecara manual di
-sistem Windows setiap kali ingin berganti versi PHP untuk menjalankanprojectyang berbeda.
-18
-
---- PAGE 20 ---
-Bab 4. Kesimpulan
-Pemahaman F undamental:Operasi CRUD (Create, Read, Update, Delete) merupak-
-an fondasi utama dalam pengembangan aplikasi web dinamis. Menguasai implementasi
-CRUD menggunakan PHP native sangat krusial karena memberikan pemahaman menda-
-sar mengenai alur kerja sistem, interaksi basis data (eksekusi kueri SQL), dan penanganan
-HTTPrequestsebelum beralih menggunakan abstraksi yang ditawarkan olehframework.
-Keamanan Aplikasi:Fungsionalitas aplikasi harus selalu diimbangi dengan keamanan.
-Memasukkan input pengguna secara langsung ke dalam kueri SQL akan membuka celah
-fatal sepertiSQL Injection. Oleh karena itu, pengembang wajib melakukan validasi input
-dan menerapkan teknikprepared statementuntuk melindungi keutuhan data sistem dari
-serangan injeksi dan kerentananCross-Site Scripting(XSS).
-19
-
---- PAGE 21 ---
-Daftar Pustaka
-[1] Sinlae, F., Irwanda, E., Maulana, Z., & Eka Syahputra, V. (2024). Penggunaan Framework
-Laravel dalam Membangun Aplikasi Website Berbasis PHP.Jurnal Siber Multi Disiplin, 2(2),
-119132.https://doi.org/10.38035/jsmd.v2i2.186
-20
