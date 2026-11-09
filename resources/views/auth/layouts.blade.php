@@ -508,6 +508,9 @@
                 @auth
                     <a href="{{ route('dashboard') }}" class="nav-link">Dashboard</a>
                     <a href="{{ route('event.index') }}" class="nav-link">Data Event</a>
+                    @if(Auth::user()->level === 'admin')
+                        <a href="{{ route('users.index') }}" class="nav-link">Manajemen User</a>
+                    @endif
                 @endauth
                 @guest
                     <a href="{{ route('login') }}" class="nav-link">Login</a>
