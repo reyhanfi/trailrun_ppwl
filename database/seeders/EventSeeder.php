@@ -159,7 +159,13 @@ class EventSeeder extends Seeder
                 'Challenge' => 200,
             };
 
-            Event::create($event);
+            Event::firstOrCreate(
+                [
+                    'nama_event' => $event['nama_event'],
+                    'penyelenggara' => $event['penyelenggara'],
+                ],
+                $event
+            );
         }
     }
 }

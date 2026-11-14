@@ -1,12 +1,12 @@
 @extends('auth.layouts')
 
-@section('title', 'Login Event Trail Run')
+@section('title', 'Login')
 
 @section('content')
     <div class="card">
         <div class="eyebrow">Akses Admin</div>
         <h1>Login</h1>
-        <p>Login untuk mengelola data Event Trail Run dengan lebih cepat dan teratur.</p>
+        <p>Login untuk mengelola data event Jatrilrun dengan lebih cepat dan teratur.</p>
 
         <form action="{{ route('authenticate') }}" method="POST" class="auth-form">
             @csrf

@@ -109,7 +109,16 @@ class UserController extends Controller
                 ->with('status', 'Anda tidak dapat menghapus akun Anda sendiri yang sedang aktif.');
         }
 
-        $user->delete();
+        try {
+            $user->delete();
+        } catch (\Illuminate\Database\QueryException $exception) {
+            if (!$user->registrations()->exists()) {
+                throw $exception;
+            }
+
+            return redirect()->route('users.index')
+                ->with('status', 'Pengguna yang memiliki pendaftaran tidak dapat dihapus.');
+        }
 
         return redirect()->route('users.index')
             ->with('status', 'User berhasil dihapus.');

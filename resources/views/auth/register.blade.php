@@ -1,12 +1,12 @@
 @extends('auth.layouts')
 
-@section('title', 'Daftar Event Trail Run')
+@section('title', 'Daftar')
 
 @section('content')
     <div class="card">
         <div class="eyebrow">Buat Akun Baru</div>
         <h1>Daftar Akun</h1>
-        <p>Buat akun untuk mengelola data Event Trail Run dengan tampilan yang rapi dan terstruktur.</p>
+        <p>Buat akun untuk mengelola data event Jatrilrun dengan tampilan yang rapi dan terstruktur.</p>
 
         <form action="{{ route('store') }}" method="POST" class="auth-form">
             @csrf

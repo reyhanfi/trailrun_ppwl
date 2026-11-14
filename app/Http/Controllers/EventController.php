@@ -50,6 +50,13 @@ class EventController extends Controller
         ));
     }
 
+    public function show(Request $request, Event $event)
+    {
+        $registration = $event->registrations()->where('user_id', $request->user()->id)->first();
+
+        return view('event.show', compact('event', 'registration'));
+    }
+
     public function create()
     {
         return view('event.create', ['event' => null]);
@@ -58,7 +65,7 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate(
-            $this->rules(),
+            Event::validationRules(),
             $this->messages()
         );
 
@@ -76,7 +83,7 @@ class EventController extends Controller
     public function update(Request $request, Event $event)
     {
         $validated = $request->validate(
-            $this->rules(),
+            Event::validationRules(),
             $this->messages()
         );
 
@@ -88,7 +95,16 @@ class EventController extends Controller
 
     public function destroy(Event $event)
     {
-        $event->delete();
+        try {
+            $event->delete();
+        } catch (\Illuminate\Database\QueryException $exception) {
+            if (!$event->registrations()->exists()) {
+                throw $exception;
+            }
+
+            return redirect()->route('event.index')
+                ->with('pesan', 'Event yang memiliki pendaftaran tidak dapat dihapus.');
+        }
 
         return redirect()->route('event.index')
             ->with('pesan', 'Event berhasil dihapus.');
@@ -111,18 +127,6 @@ class EventController extends Controller
             ->withQueryString();
 
         return view('event.search', compact('hasil', 'keyword'));
-    }
-
-    private function rules(): array
-    {
-        return [
-            'nama_event' => 'required|string|max:255',
-            'penyelenggara' => 'required|string|max:255',
-            'tipe_event' => 'required|in:Run,Trail Run,Challenge',
-            'tanggal_mulai' => 'required|date',
-            'tanggal_selesai' => 'required|date|after_or_equal:tanggal_mulai',
-            'slot_peserta' => 'required|integer|min:1|max:1000000',
-        ];
     }
 
     private function messages(): array

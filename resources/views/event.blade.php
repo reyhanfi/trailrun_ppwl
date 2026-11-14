@@ -1,21 +1,44 @@
 @extends('auth.layouts')
 
-@section('title', 'Data Event Trail Run')
+@section('title', 'Data Event')
 
 @section('content')
     <section class="page-header">
         <div>
             <p class="eyebrow">Manajemen Event</p>
-            <h1>Data Event Trail Run</h1>
+            <h1>Data Event Jatrilrun</h1>
         </div>
         <div class="header-actions">
-            <a href="{{ route('event.create') }}" class="primary-button">Tambah Event</a>
+            @if (auth()->user()->level === 'admin')
+                <a href="{{ route('event.create') }}" class="primary-button">Tambah Event</a>
+            @endif
             <a href="{{ route('event.search') }}" class="ghost-button">Pencarian Khusus</a>
         </div>
     </section>
 
     @if (session('pesan'))
         <div class="flash-message">{{ session('pesan') }}</div>
+    @endif
+
+    @if (auth()->user()->level === 'admin')
+        <section class="panel" style="margin-bottom: 22px;">
+            <div class="toolbar">
+                <h2>Import Event</h2>
+                <a href="{{ route('event.import.template') }}" class="ghost-button">Unduh Template</a>
+            </div>
+            <form method="POST" action="{{ route('event.import') }}" enctype="multipart/form-data">
+                @csrf
+                <div class="field-group">
+                    <label for="event-file">File Event (.xlsx atau .csv)</label>
+                    <input type="file" name="file" id="event-file" accept=".xlsx,.csv" required>
+                    <p class="section-note">Isi tanggal dengan format YYYY-MM-DD.</p>
+                    @error('file')
+                        <div class="error" role="alert">{{ $message }}</div>
+                    @enderror
+                </div>
+                <button class="primary-button" type="submit">Import Event</button>
+            </form>
+        </section>
     @endif
 
     <div class="stats-grid">
@@ -107,16 +130,20 @@
                             </td>
                             <td>
                                 <div class="table-actions">
-                                    <a href="{{ route('event.edit', $event->id) }}" class="mini-button edit">Edit</a>
-                                    <form action="{{ route('event.destroy', $event->id) }}" method="POST" style="margin: 0;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button
-                                            type="submit"
-                                            class="mini-button delete"
-                                            onclick="return confirm('Yakin ingin menghapus event ini?')"
-                                        >Hapus</button>
-                                    </form>
+                                    <a href="{{ route('event.show', $event) }}" class="mini-button edit">Detail</a>
+                                    @if (auth()->user()->level === 'admin')
+                                        <a href="{{ route('event.registrations.index', $event) }}" class="mini-button edit">Daftar Peserta</a>
+                                        <a href="{{ route('event.edit', $event->id) }}" class="mini-button edit">Edit</a>
+                                        <form action="{{ route('event.destroy', $event->id) }}" method="POST" style="margin: 0;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button
+                                                type="submit"
+                                                class="mini-button delete"
+                                                onclick="return confirm('Yakin ingin menghapus event ini?')"
+                                            >Hapus</button>
+                                        </form>
+                                    @endif
                                 </div>
                             </td>
                         </tr>
@@ -129,8 +156,6 @@
             </table>
         </div>
 
-        <div class="pagination">
-            {{ $events->links() }}
-        </div>
+        {{ $events->onEachSide(1)->links('pagination') }}
     </div>
 @endsection

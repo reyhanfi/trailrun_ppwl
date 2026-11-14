@@ -36,6 +36,7 @@ class LoginRegisterController extends Controller
             'name' => $validated['name'],
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
+            'level' => 'user',
         ]);
 
         Auth::login($user);

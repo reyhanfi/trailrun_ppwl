@@ -3,41 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Event Trail Run')</title>
+    <title>@hasSection('title')@yield('title') | @endif{{ config('app.name') }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap">
     <style>
         :root {
-            --bg: #f4f7f3;
+            --bg: #f2f2f2;
             --panel: #ffffff;
-            --panel-soft: #edf7ee;
-            --primary: #166534;
-            --primary-deep: #0f3d21;
-            --primary-soft: #dcfce7;
-            --text: #1f2937;
-            --muted: #6b7280;
-            --line: #dfe7df;
-            --warning: #b91c1c;
-            --shadow: 0 18px 40px rgba(15, 61, 33, 0.12);
+            --panel-soft: #e7e4e1;
+            --primary: #d83d00;
+            --primary-deep: #171717;
+            --accent: #d83d00;
+            --primary-soft: #fff0e9;
+            --text: #171717;
+            --muted: #5b5551;
+            --line: #ddd8d4;
+            --warning: var(--primary);
+            --shadow: 0 6px 20px rgba(23, 23, 23, 0.07);
+            --font-body: 'DM Sans', system-ui, sans-serif;
+            --font-heading: 'Plus Jakarta Sans', var(--font-body);
         }
 
         * { box-sizing: border-box; }
 
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: var(--font-body);
             color: var(--text);
-            background:
-                radial-gradient(circle at top left, rgba(34, 197, 94, 0.12), transparent 24%),
-                linear-gradient(180deg, #f8faf8 0%, var(--bg) 100%);
+            background: var(--bg);
         }
 
         a { color: inherit; }
+        button, input, select, textarea { font-family: inherit; }
+        :focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
 
         .topbar {
             position: sticky;
             top: 0;
             z-index: 20;
-            background: rgba(15, 61, 33, 0.94);
-            backdrop-filter: blur(12px);
+            background: var(--primary-deep);
             color: white;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
@@ -62,17 +70,18 @@
             width: 38px;
             height: 38px;
             border-radius: 12px;
-            background: linear-gradient(135deg, #86efac, #22c55e);
-            color: var(--primary-deep);
+            background: var(--accent);
+            color: white;
+            font-family: var(--font-heading);
             display: grid;
             place-items: center;
             font-weight: 700;
-            box-shadow: 0 10px 20px rgba(34, 197, 94, 0.3);
         }
 
         .brand {
             color: white;
             text-decoration: none;
+            font-family: var(--font-heading);
             font-size: 1.2rem;
             font-weight: 700;
             letter-spacing: 0.02em;
@@ -135,9 +144,8 @@
         .logout-button,
         .primary-button,
         .secondary-button {
-            background: linear-gradient(135deg, var(--primary), #22c55e);
+            background: var(--primary);
             color: white;
-            box-shadow: 0 12px 20px rgba(22, 101, 52, 0.18);
         }
 
         .ghost-button {
@@ -147,7 +155,7 @@
         }
 
         .danger-button {
-            background: #ef4444;
+            background: var(--warning);
             color: white;
         }
 
@@ -170,7 +178,7 @@
             margin-bottom: 20px;
             padding: 14px 18px;
             border-radius: 12px;
-            border: 1px solid rgba(22, 101, 52, 0.12);
+            border: 1px solid rgba(216, 61, 0, 0.16);
             background: var(--primary-soft);
             color: var(--primary-deep);
             font-weight: 600;
@@ -179,9 +187,9 @@
         .card,
         .panel,
         .form-panel {
-            background: rgba(255, 255, 255, 0.96);
+            background: var(--panel);
             border: 1px solid var(--line);
-            border-radius: 20px;
+            border-radius: 12px;
             box-shadow: var(--shadow);
         }
 
@@ -195,6 +203,7 @@
         .page-header h1,
         .section-title h2 {
             margin: 0 0 10px;
+            font-family: var(--font-heading);
             color: var(--primary-deep);
         }
 
@@ -238,8 +247,8 @@
         .field-group select:focus,
         .field-group textarea:focus {
             outline: none;
-            border-color: rgba(22, 101, 52, 0.7);
-            box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.12);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(216, 61, 0, 0.18);
         }
 
         .error {
@@ -295,11 +304,11 @@
         }
 
         .stat-card {
-            background: linear-gradient(180deg, #ffffff 0%, #f2faf5 100%);
+            background: var(--panel);
             border: 1px solid var(--line);
             border-radius: 18px;
             padding: 18px 16px;
-            box-shadow: 0 10px 20px rgba(15, 61, 33, 0.06);
+            box-shadow: var(--shadow);
         }
 
         .stat-label {
@@ -311,6 +320,7 @@
         }
 
         .stat-value {
+            font-family: var(--font-heading);
             font-size: clamp(1.5rem, 2vw, 2rem);
             font-weight: 800;
             color: var(--primary-deep);
@@ -361,15 +371,34 @@
         }
 
         th {
-            background: #f8faf8;
-            color: var(--primary-deep);
+            background: var(--primary-deep);
+            color: white;
             font-size: 0.8rem;
             letter-spacing: 0.04em;
             text-transform: uppercase;
         }
 
+        tbody tr:nth-child(odd) {
+            background: var(--panel-soft);
+        }
+
         tbody tr:hover {
-            background: #f8fbf9;
+            background: var(--primary-soft);
+        }
+
+        .role-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: var(--panel-soft);
+            color: var(--text);
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .role-badge.admin {
+            background: var(--primary-soft);
+            color: var(--primary);
         }
 
         .table-actions {
@@ -392,15 +421,15 @@
         }
 
         .mini-button.edit {
-            background: #ecfdf5;
+            background: var(--primary-soft);
             color: var(--primary);
-            border-color: rgba(22, 101, 52, 0.15);
+            border-color: rgba(216, 61, 0, 0.15);
         }
 
         .mini-button.delete {
-            background: #fef2f2;
-            color: #b91c1c;
-            border-color: rgba(185, 28, 28, 0.12);
+            background: var(--primary-soft);
+            color: var(--warning);
+            border-color: rgba(216, 61, 0, 0.12);
         }
 
         .pagination {
@@ -412,8 +441,7 @@
             margin-top: 20px;
         }
 
-        .pagination a,
-        .pagination span {
+        .pagination-item {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -427,11 +455,26 @@
             background: white;
         }
 
-        .pagination .active {
-            background: var(--primary-soft);
-            border-color: rgba(22, 101, 52, 0.2);
-            color: var(--primary-deep);
+        .pagination-item[aria-current="page"] {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
             font-weight: 700;
+        }
+
+        a.pagination-item:hover {
+            background: var(--primary-soft);
+            border-color: var(--primary);
+        }
+
+        .pagination-item[aria-disabled="true"] {
+            color: var(--muted);
+            background: var(--bg);
+            opacity: 0.55;
+        }
+
+        .pagination-gap {
+            padding: 0 4px;
         }
 
         .search-panel {
@@ -458,6 +501,32 @@
             padding: 18px;
         }
 
+        .event-details {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            margin: 0;
+        }
+
+        .event-details > div {
+            padding: 16px;
+            background: var(--bg);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .event-details dt {
+            color: var(--muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .event-details dd {
+            margin: 5px 0 0;
+            font-weight: 700;
+            overflow-wrap: anywhere;
+        }
+
         @media (max-width: 840px) {
             .stats-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -477,6 +546,7 @@
         }
 
         @media (max-width: 560px) {
+            .event-details { grid-template-columns: 1fr; }
             .topbar-inner {
                 flex-wrap: wrap;
             }
@@ -500,8 +570,8 @@
     <nav class="topbar">
         <div class="topbar-inner">
             <div class="brand-wrap">
-                <div class="brand-mark">TR</div>
-                <a href="{{ route('home') }}" class="brand">Trail Run</a>
+                <div class="brand-mark" aria-hidden="true">J</div>
+                <a href="{{ route('home') }}" class="brand">{{ config('app.name') }}</a>
             </div>
 
             <div class="nav-links">

@@ -1,6 +1,6 @@
 @extends('auth.layouts')
 
-@section('title', 'Dashboard Event Trail Run')
+@section('title', 'Dashboard')
 
 @section('content')
     <section class="page-header">

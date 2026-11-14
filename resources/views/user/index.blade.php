@@ -47,11 +47,11 @@
                             <td>{{ $user->email }}</td>
                             <td>
                                 @if ($user->level === 'admin')
-                                    <span style="display: inline-block; padding: 4px 10px; border-radius: 999px; background: #dcfce7; color: #166534; font-weight: 700; font-size: 0.85rem;">
+                                    <span class="role-badge admin">
                                         Admin
                                     </span>
                                 @else
-                                    <span style="display: inline-block; padding: 4px 10px; border-radius: 999px; background: #e0f2fe; color: #0369a1; font-weight: 700; font-size: 0.85rem;">
+                                    <span class="role-badge">
                                         User
                                     </span>
                                 @endif
@@ -80,9 +80,7 @@
         </div>
 
         @if ($users->hasPages())
-            <div class="pagination">
-                {{ $users->links() }}
-            </div>
+            {{ $users->onEachSide(1)->links('pagination') }}
         @endif
     </div>
 @endsection

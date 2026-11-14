@@ -7,7 +7,7 @@
         <div class="page-header" style="margin-bottom: 18px;">
             <div>
                 <p class="eyebrow">Pencarian Event</p>
-                <h1>Pencarian Event Trail Run</h1>
+                <h1>Pencarian Event Jatrilrun</h1>
             </div>
             <div class="header-actions">
                 <a href="{{ route('event.index') }}" class="ghost-button">Kembali ke daftar</a>
@@ -46,7 +46,7 @@
                     @forelse ($hasil as $event)
                         <tr>
                             <td>{{ ($hasil->currentPage() - 1) * $hasil->perPage() + $loop->iteration }}</td>
-                            <td>{{ $event->nama_event }}</td>
+                            <td><a class="inline-link" href="{{ route('event.show', $event) }}">{{ $event->nama_event }}</a></td>
                             <td>{{ $event->penyelenggara }}</td>
                             <td>{{ $event->tipe_event }}</td>
                             <td>{{ number_format($event->slot_peserta, 0, ',', '.') }} peserta</td>
@@ -65,8 +65,6 @@
             </table>
         </div>
 
-        <div class="pagination">
-            {{ $hasil->links() }}
-        </div>
+        {{ $hasil->onEachSide(1)->links('pagination') }}
     </div>
 @endsection
